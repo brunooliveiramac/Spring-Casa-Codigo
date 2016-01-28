@@ -1,29 +1,8 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="s"%>
-
-<!doctype html>
-<html lang="pt-BR">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width">
-	<link rel="shortcut icon" href="//cdn.shopify.com/s/files/1/0155/7645/t/189/assets/favicon.ico?1215741171247150012" type="image/ico"/>
-	<link href="https://plus.google.com/108540024862647200608" rel="publisher">
-
-	<link rel="alternate" type="application/json+oembed" href="http://www.casadocodigo.com.br/products/livro-javaee.oembed" />
-
-	<script type="text/javascript" src="//cdn.shopify.com/s/assets/themes_support/ga_urchin_forms-0826cdefee6590321eb5c0c435eeebf7a8425a5493a9e95059c40e07e069ad52.js"></script>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 
-	<!-- inject:css -->
-	<link rel="stylesheet" href="//cdn.shopify.com/s/files/1/0155/7645/t/189/assets/style.css?1215741171247150012">
-	<!-- endinject -->
-
-<link rel="canonical" href="http://www.casadocodigo.com.br/products/livro-javaee" />
-
-
-</head>
-<body class="produto">
-	<header role="banner" class="cabecalhoPrincipal container">
+<header role="banner" class="cabecalhoPrincipal container">
 		<h1 class="cabecalhoPrincipal-titulo">
 			<a tabindex="1" href="${s:mvcUrl('HC#index').build() }" class="cabecalhoPrincipal-linkTitulo">
 				<svg class="logo" role="img" aria-labelledby="altLogo" width="157px" height="55px" viewBox="-181 211.4 207.5 55" preserveAspectRatio="xMinYMid slice">
@@ -120,19 +99,25 @@
 <security:authorize>
 						<li class="colecoesDaCDC-colecaoItem">
 							<a href="/collections/todos" class="colecoesDaCDC-colecaoLink">
-								Todos
+						<fmt:message key="navegacao.categoria.home"/>
 							</a>
 						</li>
 					
 						<li class="colecoesDaCDC-colecaoItem">
 							<a href="/collections/livros-de-agile" class="colecoesDaCDC-colecaoLink">
-								Agile
+						<fmt:message key="navegacao.categoria.agile"/>
 							</a>
 						</li>
 					
 						<li class="colecoesDaCDC-colecaoItem">
-							<a href="/collections/livros-de-front-end" class="colecoesDaCDC-colecaoLink">
-								Front End
+							<a href="?locale=en_US" class="colecoesDaCDC-colecaoLink">
+						<fmt:message key="menu.en"/>
+							</a>
+						</li>
+						
+						<li class="colecoesDaCDC-colecaoItem">
+							<a href="?locale=pt" class="colecoesDaCDC-colecaoLink">
+						<fmt:message key="menu.pt"/>
 							</a>
 						</li>
 					
@@ -203,7 +188,12 @@
 			<a tabindex="3" href="${s:mvcUrl('CCC#itens').build() }" title="Ir para sacola de compras" class="sacola cabecalhoPrincipal-itemNavegacao">
 				<svg width="28px" height="34px" viewBox="0 0 28 34" role="img" aria-labelledby="sacolaLabel" class="sacola-icone">
 					<title id="sacolaLabel">
-						Você têm ${carrinhoCompras.quantidade } itens na sacola
+						<fmt:message key="menu.carrinho">
+					    	<fmt:param value="${carrinhoCompras.quantidade }"/>	 
+					    </fmt:message>
+					    
+					<%--     <s:message code="menu.carrinho" arguments=""/> --%>
+					    
 					</title>
 					<path fill="#f8965d" d="M1.66666667,26.9714355 L18.3333333,26.9714355 C19.2533333,26.9714355 20,26.2247689 20,25.3047689 L20,6.97143555 C20,6.05143555 19.2533333,5.30476888 18.3333333,5.30476888 L14.9916667,5.30476888 C14.9516667,2.53643555 12.735,0.30476888 10,0.30476888 C7.265,0.30476888 5.04833333,2.53643555 5.00833333,5.30476888 L1.66666667,5.30476888 C0.746666667,5.30476888 0,6.05143555 0,6.97143555 L0,25.3047689 C0,26.2247689 0.746666667,26.9714355 1.66666667,26.9714355 L1.66666667,26.9714355 Z M12.5,10.3047689 L7.5,10.3047689 C7.04,10.3047689 6.66666667,9.93143555 6.66666667,9.47143555 C6.66666667,9.01143555 7.04,8.63810221 7.5,8.63810221 L12.5,8.63810221 C12.96,8.63810221 13.3333333,9.01143555 13.3333333,9.47143555 C13.3333333,9.93143555 12.96,10.3047689 12.5,10.3047689 L12.5,10.3047689 Z M10,1.97143555 C11.8116667,1.97143555 13.285,3.45976888 13.325,5.30476888 L6.675,5.30476888 C6.715,3.45976888 8.18833333,1.97143555 10,1.97143555 L10,1.97143555 Z"></path>
 					<g>

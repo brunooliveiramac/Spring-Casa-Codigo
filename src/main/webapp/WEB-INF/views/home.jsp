@@ -4,11 +4,119 @@
     prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<%@taglib tagdir="/WEB-INF/tags" prefix="tags" %>
+ 
+<tags:pageTemplate titulo="Livros de Java, Android, IOS e muito mais... ">
 
- <%@include file="/WEB-INF/views/cabecalho.jsp" %>
 
-	<main>
-		
+<jsp:attribute name="extraScripts">
+</script>
+
+      <script type="text/javascript" class="analytics">
+        
+      window.ShopifyAnalytics = window.ShopifyAnalytics || {};
+      window.ShopifyAnalytics.meta = window.ShopifyAnalytics.meta || {};
+      window.ShopifyAnalytics.meta.currency = 'BRL';
+    
+        (window.gaDevIds=window.gaDevIds||[]).push('BwiEti');
+        
+        (function () {
+          var customDocumentWrite = function(content) {
+            var jquery = null;
+
+            if (window.jQuery) {
+              jquery = window.jQuery;
+            } else if (window.Checkout && window.Checkout.$) {
+              jquery = window.Checkout.$;
+            }
+
+            if (jquery) {
+              jquery('body').append(content);
+            }
+          };
+
+          var analytics = document.createElement('script');
+          var loaded = false;
+          var onload = function() {
+            if (loaded) return;
+            loaded = true;
+            window.ShopifyAnalytics.lib = window.analytics.noConflict();
+            window.ShopifyAnalytics.lib.initialize(
+              {"Google Analytics":{"trackingId":"UA-31796081-1","domain":"auto","siteSpeedSampleRate":"10","enhancedEcommerce":true,"doubleClick":true,"includeSearch":true},"Performance":{"navigationTimingApiMeasurementsEnabled":true,"navigationTimingApiMeasurementsSampleRate":0.01},"Trekkie":{"appName":"storefront","environment":"production","defaultAttributes":{"shopId":1557645}}}
+            );
+
+            window.ShopifyAnalytics.lib.ready(function() {
+              
+      ga('require', 'linker');
+      function addListener(element, type, callback) {
+        if (element.addEventListener) {
+          element.addEventListener(type, callback);
+        }
+        else if (element.attachEvent) {
+          element.attachEvent('on' + type, callback);
+        }
+      }
+      function decorate(event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement;
+        if (target && (target.getAttribute('action') || target.getAttribute('href'))) {
+          ga(function (tracker) {
+            var linkerParam = tracker.get('linkerParam');
+            document.cookie = '_shopify_ga=' + linkerParam + '; ' + 'path=/';
+          });
+        }
+      }
+      addListener(window, 'load', function(){
+        for (var i=0; i < document.forms.length; i++) {
+          var action = document.forms[i].getAttribute('action');
+          if(action && action.indexOf('/cart') >= 0) {
+            addListener(document.forms[i], 'submit', decorate);
+          }
+        }
+        for (var i=0; i < document.links.length; i++) {
+          var href = document.links[i].getAttribute('href');
+          if(href && href.indexOf('/checkout') >= 0) {
+            addListener(document.links[i], 'click', decorate);
+          }
+        }
+      });
+    
+
+              var originalDocumentWrite = document.write;
+              document.write = customDocumentWrite;
+              try {  } catch(e) {};
+              document.write = originalDocumentWrite;
+
+              
+        window.ShopifyAnalytics.lib.page(
+          null,
+          {}
+        );
+      
+              
+            });
+          }
+          analytics.onload = onload;
+          analytics.onreadystatechange = function() {
+            if (!/complete|loaded/.test(analytics.readyState)) return;
+            onload();
+          }
+          analytics.async = true;
+          analytics.src = "https://cdn.shopify.com/s/javascripts/trekkie.storefront.min.js";
+          document.getElementsByTagName('head')[0].appendChild(analytics);
+          
+      var eventsListenerScript = document.createElement('script');
+      eventsListenerScript.async = true;
+      eventsListenerScript.src = "//cdn.shopify.com/s/assets/shop_events_listener-e2120dec9968f165d7634a02c80cf8d21df905b871b40e250c0328447b945657.js";
+      document.getElementsByTagName('head')[0].appendChild(eventsListenerScript);
+    
+        })();
+      </script>
+
+</jsp:attribute>
+
+<jsp:body>
+<main>		
 	
 	<section class="vitrineDestacao container">
 		<ul class="vitrineDestacao-lista">
@@ -16,9 +124,7 @@
 			<li class="vitrineDestacao-item vitrineDestacao-itemPrincipal">
 				<a class="vitrineDestacao-itemPrincipal-link" href="/products/livro-javaee">
 
-					
-					
-
+			
 <div class="imagemLivroNinja vitrineDestacao-item-imagem" role="img">
 	<img class="imagemLivroNinja-principal" class="vitrineDestacao-itemPrincipal-imagem" src="//cdn.shopify.com/s/files/1/0155/7645/products/G8Odq4Q1TChRM5NMkpWOfJLrIdpMhXpIMt0Qs0vOAJQ_size_mode_2_size_1024x768_large.jpeg?v=1447444684" alt="Livro de Java EE" title="Livro de Java EE">
 	<div class="imagemLivroNinja-tablet" style="" role="presentation">
@@ -99,11 +205,6 @@
 		</ul>
 	</section>
 
-
-
-
-
-	
 	
 	<section class="vitrineDestaquinho container">
 	<h2 class="vitrineDestaquinho-titulo">Últimos lançamentos</h2>
@@ -155,165 +256,7 @@
 		</fieldset>
 	</form>
 </div>
-  </main>
+</main>
+</jsp:body>
+</tags:pageTemplate>
 
-	<footer class="rodape">
-		<div class="container" role="presentation">
-			<a class="rodape-logo" href="#" title="Voltar ao topo da página">
-				<svg width="81px" height="104px" viewBox="0 0 81 104" role="img" aria-labelledby="altLogoFooter">
-					<title id="altLogoFooter">Logo da Casa do Código</title>
-					<g>
-						<path d="M80.3318033,35.5725714 L80.3318033,15 L80.3306901,15.5531429 L16,15.5531429 L16,86.2594286 L80.3306901,86.2594286 L80.3306901,87 L80.3318033,66.4274286 L35.2102686,66.4274286 L35.2102686,35.5725714 L80.3318033,35.5725714" id="Fill-15" fill="#FAC459"></path>
-						<path d="M37.3760303,84.8397844 L18.4481644,84.8397844 L18.4481644,18.5887869 L80.3307325,18.5887869 L80.3307325,0.12100541 L18.4481644,0.12100541 L0.240921527,18.5887869 L0.240921527,84.8397844 L18.4481644,103.310778 L80.3307325,103.310778 L80.3307325,84.8397844 L37.3760303,84.8397844" id="Fill-16" fill="#F8965D"></path>
-					</g>
-				</svg>
-			</a>
-
-			<div class="rodape-conteudo" role="presentation">
-				<section class="rodape-secao rodape-secaoCategorias">
-					<h3 class="rodape-titulo">Coleções de programação</h3>
-					<ul>
-						
-							<li class="rodape-item">
-								<a class="rodape-itemLink" href="/collections/todos">
-									Todos
-								</a>
-							</li>
-						
-							<li class="rodape-item">
-								<a class="rodape-itemLink" href="/collections/livros-de-agile">
-									Agile
-								</a>
-							</li>
-						
-							<li class="rodape-item">
-								<a class="rodape-itemLink" href="/collections/livros-de-front-end">
-									Front End
-								</a>
-							</li>
-						
-							<li class="rodape-item">
-								<a class="rodape-itemLink" href="/collections/livros-de-games">
-									Games
-								</a>
-							</li>
-						
-							<li class="rodape-item">
-								<a class="rodape-itemLink" href="/collections/livros-de-java">
-									Java
-								</a>
-							</li>
-						
-							<li class="rodape-item">
-								<a class="rodape-itemLink" href="/collections/livros-de-mobile">
-									Mobile
-								</a>
-							</li>
-						
-							<li class="rodape-item">
-								<a class="rodape-itemLink" href="/collections/livros-desenvolvimento-web">
-									Web
-								</a>
-							</li>
-						
-							<li class="rodape-item">
-								<a class="rodape-itemLink" href="/collections/outros">
-									Outros
-								</a>
-							</li>
-						
-					</ul>
-				</section><!--
-
-			 --><section class="rodape-secao rodape-secaoLinks">
-					<h3 class="rodape-titulo">Links da <div role="presentation" class="rodape-titulo-espacador"></div>Casa do Código</h3>
-					<ul>
-						
-						<li class="rodape-item">
-							<a class="rodape-itemLink" href="/pages/sobre-a-casa-do-codigo" >
-								Sobre a Casa do Código
-							</a>
-						</li>
-						
-						<li class="rodape-item">
-							<a class="rodape-itemLink" href="http://suporte.casadocodigo.com.br" >
-								Perguntas frequentes
-							</a>
-						</li>
-						
-						<li class="rodape-item">
-							<a class="rodape-itemLink" href="http://forum.casadocodigo.com.br" >
-								Fórum de discussões
-							</a>
-						</li>
-						
-						<li class="rodape-item">
-							<a class="rodape-itemLink" href="http://www.caelum.com.br" >
-								Caelum Ensino e Inovação
-							</a>
-						</li>
-						
-						<li class="rodape-item">
-							<a class="rodape-itemLink" href="http://www.galandra.com.br" >
-								Galandra - Reforce seu inglês
-							</a>
-						</li>
-						
-						<li class="rodape-item">
-							<a class="rodape-itemLink" href="http://livros.casadocodigo.com.br" rel="nofollow">
-								Meus E-books
-							</a>
-						</li>
-						
-						<li class="rodape-item">
-							<a class="rodape-itemLink" href="http://www.codecrushing.com" rel="nofollow">
-								Code Crushing
-							</a>
-						</li>
-						
-						<li class="rodape-item">
-							<a class="rodape-itemLink" href="/pages/politica-de-privacidade" rel="nofollow">
-								Política de Privacidade
-							</a>
-						</li>
-						
-					</ul>
-				</section><!--
-
-			 --><section class="rodape-secao rodape-secaoOutros">
-					<h3 class="rodape-titulo">Receba as novidades, promoções e lançamentos</h3>
-					<form class="rodape-formularioDaNewsletter" action="https://docs.google.com/spreadsheet/formResponse?formkey=dFhxZ2tDalFiclU4T2FLZVY4UXVUc2c6MQ&embedded=true&ifq" method="POST">
-						<input type="hidden" name="pageNumber" value="0">
-						<input type="hidden" name="backupCache" value="">
-						<input class="rodape-campoDaNewsletter" type="email" name="entry.0.single" value="" id="entry_0" placeholder="seu@email.com"><!--
-					 --><button class="rodape-botaoDaNewsletter" type="submit" name="submit" id="submit-newsletter">ok</button>
-					</form>
-
-					<h3 class="rodape-titulo rodape-tituloSecundario">Este site aceita</h3>
-					<ul>
-						<li class="rodape-formaDePagamento">
-							<img src="//cdn.shopify.com/s/files/1/0155/7645/t/189/assets/pagseguro.png?1057931688501172147" border="0" alt="pag seguro"/>
-						</li>
-						<li class="rodape-formaDePagamento">
-							<img src="//cdn.shopify.com/s/files/1/0155/7645/t/189/assets/paypal.png?1057931688501172147" border="0" alt="paypal"/>
-						</li>
-					</ul>
-
-					<h3 class="rodape-titulo rodape-tituloSecundario">Nas redes sociais</h3>
-					<ul>
-						<li class="rodape-item rodape-redeSocial">
-							<a class="compartilhar-facebook" href="http://www.facebook.com/casadocodigo" rel="nofollow" title="Casa do Código no Facebook" rel="nofollow" target="_blank">/CasaDoCodigo</a>
-						</li>
-						<li class="rodape-item rodape-redeSocial">
-							<a class="compartilhar-twitter" href="http://www.twitter.com/casadocodigo" rel="nofollow" title="Casa do Código no Twitter" rel="nofollow" target="_blank">@casadocodigo</a>
-						</li>
-					</ul>
-				</section>
-
-			</div>
-		</div>
-	</footer>
-	<script type="text/javascript" src="//cdn.shopify.com/s/files/1/0155/7645/t/189/assets/trackExternalLinks.js?1057931688501172147"></script>
-	
-</body>
-</html>
